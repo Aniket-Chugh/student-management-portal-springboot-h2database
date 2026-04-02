@@ -1,0 +1,364 @@
+/* =========================================================================
+   IBM Carbon Design System (Dark Theme / Gray 100)
+   ========================================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&display=swap');
+
+:root {
+    /* Carbon Theme Colors */
+    --bg-base: #161616;
+    --bg-layer: #262626;
+    --bg-field: #393939;
+
+    --border-subtle: #393939;
+    --border-strong: #525252;
+    --border-interactive: #8d8d8d;
+
+    --accent-primary: #0f62fe; /* IBM Blue 60 */
+    --accent-primary-hover: #0353e9;
+    --accent-delete: #da1e28;  /* IBM Red 60 */
+    --accent-delete-hover: #b81921;
+
+    --text-primary: #f4f4f4;
+    --text-secondary: #c6c6c6;
+    --text-error: #ff8389;
+
+    /* IBM Layout - Strict, structural, no curves, no shadows */
+    --radius-none: 0px;
+    --transition: all 0.11s cubic-bezier(0.2, 0, 0.38, 0.9); /* Fast Carbon motion */
+}
+
+/* =========================================================================
+   Base & Typography
+   ========================================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    line-height: 1.5;
+}
+
+/* Fallback cleanup for animated shapes if they still exist in HTML */
+.bg-shape {
+    display: none !important;
+}
+
+/* =========================================================================
+   Layout
+   ========================================================================= */
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 48px auto; /* Carbon uses 8px grid spacing */
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+/* =========================================================================
+   Components (Overriding old Glassmorphism)
+   ========================================================================= */
+
+.glass-panel {
+    /* Completely flat, solid colors, sharp borders */
+    background: var(--bg-layer);
+    border: none;
+    border-radius: var(--radius-none);
+    padding: 32px;
+    box-shadow: none;
+}
+
+header {
+    text-align: left; /* IBM aligns left for better scanning */
+    padding: 0 0 32px 0 !important;
+    border-bottom: 1px solid var(--border-subtle);
+    margin-bottom: 16px;
+}
+
+header h1 {
+    font-size: 2rem; /* Adjusted for IBM scale */
+    font-weight: 300; /* Carbon headers are often lighter weight */
+    margin-bottom: 8px;
+    background: none;
+    -webkit-background-clip: unset;
+    background-clip: unset;
+    -webkit-text-fill-color: unset;
+    color: var(--text-primary);
+}
+
+header p {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================================================
+   Forms (Carbon Input Style)
+   ========================================================================= */
+
+.form-panel h2 {
+    margin-bottom: 24px;
+    font-size: 1.25rem;
+    font-weight: 400;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.form-group {
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-row .half {
+    flex: 1;
+}
+
+label {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: 0.32px;
+}
+
+input {
+    width: 100%;
+    background: var(--bg-field);
+    border: none;
+    border-bottom: 1px solid var(--border-interactive);
+    color: var(--text-primary);
+    padding: 11px 16px; /* Carbon 40px height spec */
+    border-radius: var(--radius-none);
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: var(--transition);
+    outline: none;
+}
+
+input:focus {
+    /* Carbon's signature focus state */
+    outline: 2px solid #ffffff;
+    outline-offset: -2px;
+    border-bottom-color: transparent;
+}
+
+input::placeholder {
+    color: var(--border-interactive);
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+
+.form-actions {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.btn {
+    border: none;
+    padding: 14px 24px 14px 16px;
+    min-height: 48px; /* Standard Carbon button height */
+    border-radius: var(--radius-none);
+    cursor: pointer;
+    font-weight: 400;
+    font-size: 0.875rem;
+    font-family: inherit;
+    transition: var(--transition);
+    flex: 1;
+    display: inline-flex;
+    justify-content: space-between; /* Carbon buttons often space text/icons */
+    align-items: center;
+}
+
+.btn.primary {
+    background: var(--accent-primary);
+    color: #ffffff;
+}
+
+.btn.primary:hover {
+    background: var(--accent-primary-hover);
+}
+
+.btn.primary:focus {
+    outline: 2px solid #ffffff;
+    outline-offset: -2px;
+    border: 1px solid var(--accent-primary);
+}
+
+.btn.secondary {
+    background: var(--bg-field);
+    color: var(--text-primary);
+    border: none;
+}
+
+.btn.secondary:hover {
+    background: var(--border-strong);
+}
+
+.btn.icon-btn {
+    padding: 12px;
+    background: transparent;
+    border-radius: var(--radius-none);
+    color: var(--text-primary);
+    font-size: 1rem;
+    flex: none;
+    min-height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    border: none;
+}
+
+.btn.icon-btn:hover {
+    background: var(--bg-field);
+    transform: none; /* No scaling in IBM */
+}
+
+.btn.delete-icon {
+    color: var(--accent-delete);
+}
+
+.btn.delete-icon:hover {
+    background: var(--accent-delete);
+    color: #ffffff;
+}
+
+/* =========================================================================
+   Table & List
+   ========================================================================= */
+
+.list-panel {
+    display: flex;
+    flex-direction: column;
+}
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.table-container {
+    overflow-x: auto;
+    background: var(--bg-layer);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+th, td {
+    padding: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+    border-top: 1px solid var(--border-subtle);
+}
+
+th {
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: none; /* IBM avoids all-caps in tables */
+    font-size: 0.875rem;
+    background: var(--bg-layer);
+}
+
+tbody tr {
+    transition: background-color 0.11s ease-in;
+}
+
+tbody tr:hover {
+    background: var(--bg-field); /* Carbon table row hover */
+}
+
+td {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.actions-col {
+    width: 120px;
+    text-align: right;
+}
+
+td .action-cell {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0; /* Carbon groups icons tightly */
+}
+
+/* =========================================================================
+   States & Errors
+   ========================================================================= */
+
+.empty-state {
+    text-align: left;
+    padding: 48px 16px;
+    color: var(--text-primary);
+    display: none;
+}
+
+.empty-icon {
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    opacity: 1;
+}
+
+.error-msg {
+    color: var(--text-error);
+    font-size: 0.75rem;
+    min-height: 16px;
+    margin-top: 4px;
+    display: block;
+}
+
+.backend-error {
+    text-align: left;
+    font-weight: 400;
+    font-size: 0.875rem;
+    padding: 16px;
+    border-radius: var(--radius-none);
+    background: #4b0000; /* Carbon high-contrast error block */
+    border-left: 4px solid var(--accent-delete);
+    color: #ffffff;
+    display: none;
+    margin-bottom: 24px;
+}

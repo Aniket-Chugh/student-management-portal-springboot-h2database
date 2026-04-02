@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A beautiful interactive dashboard for the Student API.">
+    <title>Student API Dashboard</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+
+    <!-- Background Animated Shapes -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <main class="container">
+
+        <header class="glass-panel">
+            <h1>🧑‍🎓 Student API Dashboard</h1>
+            <p>Layered Architecture Explorer</p>
+        </header>
+
+        <section class="content-grid">
+
+            <!-- Student Management Form -->
+            <div class="glass-panel form-panel">
+                <h2 id="form-title">Add New Student</h2>
+                <form id="student-form">
+                    <input type="hidden" id="student-id">
+
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="E.g. Jane Doe">
+                        <span class="error-msg" id="error-name"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="jane@example.com">
+                        <span class="error-msg" id="error-email"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="age">Age</label>
+                            <input type="number" id="age" placeholder="Min. 16">
+                            <span class="error-msg" id="error-age"></span>
+                        </div>
+
+                        <div class="form-group half">
+                            <label for="course">Course</label>
+                            <input type="text" id="course" placeholder="E.g. Computer Science">
+                            <span class="error-msg" id="error-course"></span>
+                        </div>
+                    </div>
+
+                    <div id="general-error" class="error-msg backend-error"></div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn primary" id="submit-btn">Save Student</button>
+                        <button type="button" class="btn secondary" id="cancel-btn"
+                            style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Student List Table -->
+            <div class="glass-panel list-panel">
+                <div class="list-header">
+                    <h2>Directory</h2>
+                    <button class="btn icon-btn" id="refresh-btn" title="Refresh List">🔄</button>
+                </div>
+
+                <div class="table-container">
+                    <table id="students-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Age</th>
+                                <th>Course</th>
+                                <th class="actions-col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-tbody">
+                            <!-- Rows injected via JS -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="empty-state" class="empty-state">
+                    <div class="empty-icon">📂</div>
+                    <p>No students found. Add one to get started!</p>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
